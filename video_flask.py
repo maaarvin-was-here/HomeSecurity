@@ -1,5 +1,4 @@
 import zmq
-from imutils import build_montages
 import datetime
 import time
 import threading
@@ -14,7 +13,8 @@ import argparse
 import imutils
 import cv2 as cv
 
-# server ip : 10.19.48.109
+# mac ip : 192.168.0.13
+# windows ip : 192.168.0.21
 
 imageHub = imagezmq.ImageHub()
 
@@ -51,7 +51,7 @@ def get_frames():
         if not flag:
             continue
 
-        return (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' +
+        yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' +
                 bytearray(encodedImage) + b'\r\n')
 
 
@@ -61,5 +61,5 @@ def video_feed():
                     mimetype="multipart/x-mixed-replace; boundary=frame")
 
 
-app.run(host="192.168.0.13", port="8000", debug=True,
+app.run(host="192.168.0.21", port=8000, debug=True,
         threaded=True, use_reloader=False)
