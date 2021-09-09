@@ -12,11 +12,14 @@ Raspberry Pi Security System - Streaming to Web Server
 macbook on home wifi ip : 192.168.0.13
 windows on home wifi ip : 192.168.0.21
 
-```
-ssh pi@pi-bedroom
-```
-- remember to do: workon cv
+# For the Client, from Terminal run:
+  ssh pi@pi-bedroom
+  workon cv
+
+  python start_video.py -s <server ip>
 
 
-#- python start_video.py -s <server ip>
+# For the Server run:
+  video_flask.py
+ 
 
