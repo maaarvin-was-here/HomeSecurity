@@ -1,12 +1,9 @@
-import cv2 as cv
-
 from imutils.video import VideoStream
 import imagezmq
 import argparse
 import socket
 import time
 
-print(cv.__version__)
 
 # constructs argument parser
 ap = argparse.ArgumentParser()
@@ -18,9 +15,13 @@ args = vars(ap.parse_args())
 sender = imagezmq.ImageSender(connect_to="tcp://{}:5555".format(
     args["server_ip"]))
 
+print("Connection to Server Established")
+
 # get host name, initialize video stream, allow sensor to warm up
 rpiName = socket.gethostname()
 vs = VideoStream(src=0).start()
+
+print("Starting Video Stream")
 
 time.sleep(2.0)
 
