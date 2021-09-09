@@ -16,5 +16,7 @@ windows on home wifi ip : 192.168.0.21
 ssh pi@pi-bedroom
 ```
 - remember to do: workon cv
+
+
 #- python start_video.py -s <server ip>
 
